@@ -16,6 +16,12 @@
 
 # Technique discovered by Nevada Romsdahl in 2023
 
+# Run as root to modify root-owned files
+if [ `id -u` -ne 0 ]; then
+   echo "Error: $0 must be run as root" 1>&2
+   exit 1
+fi
+
 # Path for responder config, below is default for Kali and Parrot, change if needed
 CONFIG_PATH=/usr/share/responder/Responder.conf
 # Path for responder files, below is default for Kali and Parrot, change if needed
